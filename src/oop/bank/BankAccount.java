@@ -1,6 +1,6 @@
 package oop.bank;
 
-public class BankAccount {
+public abstract class BankAccount {
     private static int createdCount = 0;
 
     private final int accountNumber;
@@ -52,9 +52,12 @@ public class BankAccount {
         return createdCount;
     }
 
+    public abstract String getAccountType();
+
     @Override
     public String toString() {
-        return "BankAccount{accountNumber=" + accountNumber
+        return "BankAccount{type='" + getAccountType()
+                + "', accountNumber=" + accountNumber
                 + ", owner='" + owner
                 + "', balance=" + balance + "}";
     }

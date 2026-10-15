@@ -12,4 +12,9 @@ public class SavingsAccount extends BankAccount {
         }
         return super.withdraw(amount);
     }
+
+    @Override
+    public String getAccountType() {
+        return "SavingsAccount";
+    }
 }

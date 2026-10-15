@@ -20,4 +20,9 @@ public class CreditAccount extends BankAccount {
         balance -= amount;
         return true;
     }
+
+    @Override
+    public String getAccountType() {
+        return "CreditAccount";
+    }
 }
