@@ -1,12 +1,19 @@
 package oop.bank;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BankDemo {
     public static void main(String[] args) {
-        SavingsAccount savings = new SavingsAccount("Alice", 1000);
-        CreditAccount credit = new CreditAccount("Bob", 500, 3000);
+        List<BankAccount> accounts = new ArrayList<>();
 
-        System.out.println(savings.getBalance());
-        System.out.println(credit.getBalance());
-        System.out.println(credit.getCreditLimit());
+        accounts.add(new SavingsAccount("Alice", 10000));
+        accounts.add(new CreditAccount("Bob", 4000, 3000));
+
+        for (BankAccount account : accounts) {
+            boolean success = account.withdraw(6000);
+            System.out.println("Withdrawal success: " + success);
+            System.out.println(account);
+        }
     }
 }
