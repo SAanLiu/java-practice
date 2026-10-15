@@ -1,12 +1,19 @@
 package oop.bank;
 
 public class BankAccount {
-    public String owner;
-    public double balance;
+    private String owner;
+    private double balance;
 
     public BankAccount(String owner) {
+        this(owner, 0);
+    }
+
+    public BankAccount(String owner, double initialBalance) {
+        if (initialBalance < 0) {
+            throw new IllegalArgumentException("初始余额不能为负数");
+        }
         this.owner = owner;
-        this.balance = 0;
+        this.balance = initialBalance;
     }
 
     public boolean deposit(double amount) {
@@ -29,4 +36,3 @@ public class BankAccount {
         return balance;
     }
 }
-

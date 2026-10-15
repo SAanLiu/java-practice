@@ -2,12 +2,10 @@ package oop.bank;
 
 public class BankDemo {
     public static void main(String[] args) {
-        BankAccount account = new BankAccount("张三");
+        BankAccount a = new BankAccount("张三");
+        BankAccount b = new BankAccount("李四", 500);
 
-        System.out.println(account.deposit(1000));
-        System.out.println(account.withdraw(300));
-        System.out.println(account.withdraw(1000));
-        System.out.println(account.deposit(-10));
-        System.out.println(account.getBalance());
+        System.out.println(a.getBalance()); // 0.0
+        System.out.println(b.getBalance()); // 500.0
     }
 }
