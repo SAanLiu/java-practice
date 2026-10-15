@@ -35,4 +35,9 @@ public class BankAccount {
     public double getBalance() {
         return balance;
     }
+
+    @Override
+    public String toString() {
+        return "BankAccount{owner='" + owner + "', balance=" + balance + "}";
+    }
 }
