@@ -1,6 +1,9 @@
 package oop.bank;
 
 public class BankAccount {
+    private static int createdCount = 0;
+
+    private final int accountNumber;
     private String owner;
     private double balance;
 
@@ -10,8 +13,10 @@ public class BankAccount {
 
     public BankAccount(String owner, double initialBalance) {
         if (initialBalance < 0) {
-            throw new IllegalArgumentException("初始余额不能为负数");
+            throw new IllegalArgumentException("The initial balance cannot be negative.");
         }
+
+        this.accountNumber = ++createdCount;
         this.owner = owner;
         this.balance = initialBalance;
     }
@@ -32,8 +37,16 @@ public class BankAccount {
         return true;
     }
 
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
     public double getBalance() {
         return balance;
+    }
+
+    public static int getTotalAccounts() {
+        return createdCount;
     }
 
     @Override
