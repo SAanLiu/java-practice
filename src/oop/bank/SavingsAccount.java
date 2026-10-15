@@ -6,11 +6,8 @@ public class SavingsAccount extends BankAccount {
     }
 
     @Override
-    public boolean withdraw(double amount) {
-        if (amount > 5000) {
-            return false;
-        }
-        return super.withdraw(amount);
+    protected double getAvailableFunds() {
+        return Math.min(getBalance(), 5000);
     }
 
     @Override

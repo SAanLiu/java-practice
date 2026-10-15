@@ -5,7 +5,7 @@ public abstract class BankAccount {
 
     private final int accountNumber;
     private String owner;
-    protected double balance;
+    private double balance;
 
     public BankAccount(String owner) {
         this(owner, 0);
@@ -32,8 +32,12 @@ public abstract class BankAccount {
         return true;
     }
 
+    protected double getAvailableFunds() {
+        return balance;
+    }
+
     public boolean withdraw(double amount) {
-        if (amount <= 0 || amount > balance) {
+        if (amount <= 0 || amount > getAvailableFunds()) {
             return false;
         }
         balance -= amount;
