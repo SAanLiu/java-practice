@@ -11,4 +11,13 @@ public class CreditAccount extends BankAccount {
     public double getCreditLimit() {
         return creditLimit;
     }
+
+    @Override
+    public boolean withdraw(double amount) {
+        if (amount <= 0 || amount > balance + creditLimit) {
+            return false;
+        }
+        balance -= amount;
+        return true;
+    }
 }

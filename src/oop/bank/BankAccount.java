@@ -5,7 +5,7 @@ public class BankAccount {
 
     private final int accountNumber;
     private String owner;
-    private double balance;
+    protected double balance;
 
     public BankAccount(String owner) {
         this(owner, 0);
