@@ -12,8 +12,11 @@ public class BankAccount {
     }
 
     public BankAccount(String owner, double initialBalance) {
+        if (owner == null || owner.trim().isEmpty()) {
+            throw new IllegalArgumentException("Owner cannot be null or blank");
+        }
         if (initialBalance < 0) {
-            throw new IllegalArgumentException("The initial balance cannot be negative.");
+            throw new IllegalArgumentException("Initial balance cannot be negative");
         }
 
         this.accountNumber = ++createdCount;
@@ -51,6 +54,8 @@ public class BankAccount {
 
     @Override
     public String toString() {
-        return "BankAccount{owner='" + owner + "', balance=" + balance + "}";
+        return "BankAccount{accountNumber=" + accountNumber
+                + ", owner='" + owner
+                + "', balance=" + balance + "}";
     }
 }

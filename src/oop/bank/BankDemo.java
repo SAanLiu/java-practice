@@ -25,9 +25,9 @@ public class BankDemo {
         System.out.println("Deposit 100: "
                 + first.deposit(100)); // true
         System.out.println("Withdraw more than the balance: "
-                + first.withdraw(200)); // true
+                + first.withdraw(200)); // false
         System.out.println("Withdraw a negative amount: "
-                + first.withdraw(-10)); // true
+                + first.withdraw(-10)); // false
         System.out.println("Withdraw 30: "
                 + first.withdraw(30)); // true
         System.out.println("Alice's balance: "
