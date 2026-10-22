@@ -11,8 +11,12 @@ public class BankDemo {
         accounts.add(new CreditAccount("Bob", 4000, 3000));
 
         for (BankAccount account : accounts) {
-            boolean success = account.withdraw(6000);
-            System.out.println("Withdrawal success: " + success);
+            try {
+                account.withdraw(6000);
+                System.out.println("Withdrawal succeeded.");
+            } catch (InsufficientFundsException | IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
             System.out.println(account);
         }
 

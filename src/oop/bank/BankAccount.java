@@ -36,12 +36,17 @@ public abstract class BankAccount {
         return balance;
     }
 
-    public boolean withdraw(double amount) {
-        if (amount <= 0 || amount > getAvailableFunds()) {
-            return false;
+    public void withdraw(double amount) throws InsufficientFundsException {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Withdrawal amount must be positive");
         }
+
+        double availableAmount = getAvailableFunds();
+        if (amount > availableAmount) {
+            throw new InsufficientFundsException(amount, availableAmount);
+        }
+
         balance -= amount;
-        return true;
     }
 
     public int getAccountNumber() {
