@@ -24,12 +24,11 @@ public abstract class BankAccount {
         this.balance = initialBalance;
     }
 
-    public boolean deposit(double amount) {
+    public void deposit(double amount) {
         if (amount <= 0) {
-            return false;
+            throw new IllegalArgumentException("Deposit amount must be positive");
         }
         balance += amount;
-        return true;
     }
 
     protected double getAvailableFunds() {
