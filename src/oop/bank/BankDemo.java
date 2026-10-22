@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BankDemo {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InsufficientFundsException {
         List<BankAccount> accounts = new ArrayList<>();
 
         accounts.add(new SavingsAccount("Alice", 10000));
@@ -16,20 +16,14 @@ public class BankDemo {
                 System.out.println("Withdrawal succeeded.");
             } catch (InsufficientFundsException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
+            } finally {
+                System.out.println("Transaction finished.");
             }
+
             System.out.println(account);
         }
 
-        for (BankAccount account : accounts) {
-            double balanceBefore = account.getBalance();
-
-            if (account instanceof InterestBearing ib) {
-                ib.applyInterest();
-            }
-
-            System.out.println("Account " + account.getAccountNumber()
-                    + " balance after interest: "
-                    + balanceBefore + " -> " + account.getBalance());
-        }
+        SavingsAccount failingAccount = new SavingsAccount("Charlie", 10000);
+        failingAccount.withdraw(6000);
     }
 }
