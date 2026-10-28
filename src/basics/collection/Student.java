@@ -25,6 +25,11 @@ public class Student {
         return id == student.id && Objects.equals(name, student.name);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
+
     public static void main(String[] args) {
         Student first = new Student(1, "Tom");
         Student second = new Student(1, "Tom");
