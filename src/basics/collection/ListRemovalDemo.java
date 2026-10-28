@@ -3,6 +3,7 @@ package basics.collection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ConcurrentModificationException;
+import java.util.Iterator;
 import java.util.List;
 
 public class ListRemovalDemo {
@@ -11,6 +12,7 @@ public class ListRemovalDemo {
         testForEachRemoval("Middle", "C", false);
         testForEachRemoval("Second to last", "D", false);
         testForEachRemoval("Last", "E", false);
+        testIteratorRemoval();
     }
 
     private static void testForEachRemoval(String position, String target,
@@ -34,5 +36,20 @@ public class ListRemovalDemo {
 
         System.out.println("Remaining values: " + values);
         System.out.println();
+    }
+
+    private static void testIteratorRemoval() {
+        List<String> values = new ArrayList<>(Arrays.asList("A", "B", "C", "D", "E"));
+        Iterator<String> iterator = values.iterator();
+
+        while (iterator.hasNext()) {
+            String value = iterator.next();
+            if (value.equals("B") || value.equals("D")) {
+                iterator.remove();
+            }
+        }
+
+        System.out.println("Iterator.remove example:");
+        System.out.println("Remaining values: " + values);
     }
 }
