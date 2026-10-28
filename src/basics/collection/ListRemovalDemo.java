@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class ListRemovalDemo {
     public static void main(String[] args) {
@@ -13,6 +14,7 @@ public class ListRemovalDemo {
         testForEachRemoval("Second to last", "D", false);
         testForEachRemoval("Last", "E", false);
         testIteratorRemoval();
+        testRemoveIf();
     }
 
     private static void testForEachRemoval(String position, String target,
@@ -50,6 +52,20 @@ public class ListRemovalDemo {
         }
 
         System.out.println("Iterator.remove example:");
+        System.out.println("Remaining values: " + values);
+    }
+
+    private static void testRemoveIf() {
+        List<String> values = new ArrayList<>(Arrays.asList("A", "B", "C", "D", "E"));
+        boolean removed = values.removeIf(new Predicate<String>() {
+            @Override
+            public boolean test(String value) {
+                return value.equals("B") || value.equals("D");
+            }
+        });
+
+        System.out.println("removeIf example:");
+        System.out.println("Removed any values: " + removed);
         System.out.println("Remaining values: " + values);
     }
 }
