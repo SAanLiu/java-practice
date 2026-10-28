@@ -1,6 +1,7 @@
 package basics.collection;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class Student {
@@ -10,6 +11,18 @@ public class Student {
     public Student(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (!(other instanceof Student)) {
+            return false;
+        }
+        Student student = (Student) other;
+        return id == student.id && Objects.equals(name, student.name);
     }
 
     public static void main(String[] args) {
